@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Manual de Flexibilidad Activa</title>
+<style>
+:root{
+  --grafito-950:#14151a;
+  --grafito-900:#1b1d24;
+  --grafito-800:#262932;
+  --grafito-700:#343844;
+  --grafito-600:#4a4f5e;
+  --acero-400:#8b91a3;
+  --acero-300:#aeb3c2;
+  --hueso-100:#eceae3;
+  --hueso-50:#f6f4ee;
+  --oxido-500:#c75a2c;
+  --oxido-400:#e0703f;
+  --oxido-300:#f0926a;
+  --tiza-400:#d9c98f;
+  --line:#343844;
+  --radius:2px;
+  --serif: "Source Serif 4", Georgia, serif;
+  --mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+  --sans: "Inter", -apple-system, sans-serif;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--hueso-50);
+  color:var(--grafito-900);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important;}
+}
+
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ===== Type scale ===== */
+.display{
+  font-family:var(--serif);
+  font-weight:700;
+  letter-spacing:-0.01em;
+  line-height:0.98;
+}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--oxido-500);
+  font-weight:600;
+}
+.num{font-family:var(--mono);}
+
+/* ===== Top bar ===== */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:var(--grafito-950);
+  border-bottom:1px solid var(--grafito-700);
+}
+.topbar-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;
+  gap:24px;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;
+  color:var(--hueso-100);
+}
+.brand-mark{
+  width:30px;height:30px;border-radius:50%;
+  border:3px solid var(--oxido-500);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;flex:none;
+}
+.brand-mark::after{
+  content:"";
+  width:8px;height:8px;border-radius:50%;
+  background:var(--oxido-500);
+}
+.brand-text{
+  font-family:var(--serif);font-weight:700;font-size:17px;
+  letter-spacing:0.01em;
+}
+.brand-text small{
+  display:block;font-family:var(--mono);font-weight:500;
+  font-size:9.5px;letter-spacing:0.14em;color:var(--acero-400);
+  text-transform:uppercase;margin-top:1px;
+}
+.topbar-meta{
+  font-family:var(--mono);font-size:11px;color:var(--acero-400);
+  display:flex;gap:18px;letter-spacing:0.02em;
+}
+.topbar-meta span b{color:var(--hueso-100);font-weight:600;}
+.back-link{
+  display:none;
+  align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;
+  letter-spacing:0.04em;
+  color:var(--hueso-100);
+  padding:8px 14px;border:1px solid var(--grafito-700);border-radius:var(--radius);
+}
+.back-link:hover{border-color:var(--oxido-500);color:var(--oxido-300);}
+
+/* ===== Hero ===== */
+.hero{
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(199,90,44,0.16), transparent 60%),
+    var(--grafito-950);
+  color:var(--hueso-100);
+  padding:64px 28px 56px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--grafito-700);
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 64px);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1280px;margin:0 auto;position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:end;
+}
+.hero h1{
+  font-size:clamp(34px,5vw,58px);
+  margin:14px 0 18px;
+  color:var(--hueso-50);
+}
+.hero h1 em{
+  font-style:normal;color:var(--oxido-400);
+}
+.hero p.lead{
+  font-size:16px;line-height:1.6;color:var(--acero-300);
+  max-width:560px;margin:0;
+}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--grafito-700);border-radius:var(--radius);
+  overflow:hidden;
+}
+.hero-stat{
+  padding:16px 14px;border-right:1px solid var(--grafito-700);
+  background:rgba(255,255,255,0.02);
+}
+.hero-stat:last-child{border-right:none;}
+.hero-stat .n{
+  font-family:var(--serif);font-size:30px;font-weight:700;color:var(--oxido-400);
+  line-height:1;
+}
+.hero-stat .l{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--acero-400);margin-top:6px;
+}
+
+/* ===== Intro / philosophy section ===== */
+.philosophy{
+  max-width:1280px;margin:0 auto;
+  padding:52px 28px 8px;
+  display:grid;grid-template-columns:280px 1fr;gap:48px;
+}
+.philosophy .side h2{
+  font-size:26px;margin:8px 0 0;
+}
+.philosophy .side p.attrib{
+  font-family:var(--mono);font-size:11.5px;color:var(--acero-400);
+  margin-top:14px;line-height:1.7;
+}
+.philosophy .body p{
+  font-size:15px;line-height:1.75;color:var(--grafito-800);
+  margin:0 0 16px;
+}
+.philosophy .body p:first-of-type{
+  font-size:17px;
+  color:var(--grafito-900);
+}
+.rules{
+  margin-top:8px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.rule-card{
+  background:var(--hueso-50);padding:20px 18px;
+}
+.rule-card .ico{
+  font-family:var(--mono);font-size:11px;color:var(--oxido-500);
+  letter-spacing:0.08em;
+}
+.rule-card h4{
+  font-family:var(--serif);font-size:16.5px;margin:8px 0 2px;
+}
+.rule-card .sub{
+  font-family:var(--mono);font-size:10.5px;color:var(--acero-400);
+  text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;
+}
+.rule-card p{
+  font-size:13px;line-height:1.6;color:var(--grafito-700);margin:0;
+}
+
+/* ===== Planning section ===== */
+.planning{
+  max-width:1280px;margin:48px auto 0;padding:0 28px;
+}
+.planning h2{font-size:24px;margin:0 0 6px;}
+.planning > p{
+  color:var(--grafito-700);font-size:14px;max-width:760px;line-height:1.65;margin:0 0 24px;
+}
+.plan-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.plan-card{
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:#fff;padding:22px 20px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.plan-card .pnum{
+  font-family:var(--mono);font-size:34px;color:var(--hueso-100);
+  -webkit-text-stroke:1.5px var(--grafito-600);
+  color:transparent;
+  line-height:1;
+}
+.plan-card h3{font-family:var(--serif);font-size:18px;margin:0;}
+.plan-card .sub{
+  font-family:var(--mono);font-size:10.5px;color:var(--oxido-500);
+  text-transform:uppercase;letter-spacing:0.06em;
+}
+.plan-card p{font-size:13.5px;line-height:1.6;color:var(--grafito-700);margin:0;}
+.plan-card ul{margin:4px 0 0;padding-left:18px;}
+.plan-card li{font-size:13px;line-height:1.6;color:var(--grafito-700);margin-bottom:6px;}
+
+/* ===== Library section ===== */
+.library{
+  max-width:1280px;margin:56px auto 0;padding:0 28px 80px;
+}
+.library-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:18px;flex-wrap:wrap;gap:10px;
+}
+.library-head h2{font-size:24px;margin:0;}
+.result-count{
+  font-family:var(--mono);font-size:12px;color:var(--grafito-700);
+}
+.result-count b{color:var(--oxido-500);}
+
+.filters{
+  display:flex;flex-direction:column;gap:14px;
+  margin-bottom:28px;
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:#fff;padding:18px 20px;
+}
+.filter-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.filter-row .flabel{
+  font-family:var(--mono);font-size:10.5px;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--acero-400);width:104px;flex:none;
+}
+.search-row{position:relative;flex:1;min-width:220px;}
+.search-row input{
+  width:100%;padding:9px 14px 9px 34px;
+  border:1px solid var(--line);border-radius:var(--radius);
+  font-family:var(--sans);font-size:13.5px;background:var(--hueso-50);
+  color:var(--grafito-900);
+}
+.search-row input:focus{outline:2px solid var(--oxido-400);outline-offset:1px;}
+.search-row svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:0.45;}
+
+.chip{
+  font-family:var(--mono);font-size:11.5px;
+  padding:6px 12px;border:1px solid var(--line);border-radius:999px;
+  background:#fff;color:var(--grafito-800);letter-spacing:0.01em;
+  transition:border-color 0.12s, color 0.12s, background 0.12s;
+}
+.chip:hover{border-color:var(--oxido-400);}
+.chip.active{
+  background:var(--grafito-950);color:var(--hueso-50);border-color:var(--grafito-950);
+}
+.chip .count{opacity:0.55;margin-left:4px;}
+
+.clear-filters{
+  font-family:var(--mono);font-size:11px;color:var(--oxido-500);
+  text-decoration:underline;text-underline-offset:2px;
+  align-self:flex-start;background:none;border:none;padding:0;display:none;
+}
+.clear-filters.show{display:inline-block;}
+
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));
+  gap:18px;
+}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:#fff;
+  display:flex;flex-direction:column;
+  cursor:pointer;
+  transition:border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  position:relative;
+  overflow:hidden;
+}
+.card:hover{
+  border-color:var(--oxido-400);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px -12px rgba(20,21,26,0.25);
+}
+.card:focus-visible{outline:2px solid var(--oxido-500);outline-offset:2px;}
+.card-plate{
+  height:96px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 60%),
+    linear-gradient(135deg, var(--grafito-800), var(--grafito-950));
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;position:relative;
+}
+.card-plate .block-tag{
+  font-family:var(--mono);font-size:10px;color:var(--acero-400);
+  text-transform:uppercase;letter-spacing:0.07em;
+  max-width:130px;line-height:1.4;
+}
+.card-id{
+  font-family:var(--serif);font-weight:700;font-size:34px;color:rgba(246,244,238,0.92);
+  line-height:1;
+}
+.card-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:10px;}
+.card-body h3{
+  font-family:var(--serif);font-size:17px;line-height:1.3;margin:0;
+  color:var(--grafito-950);
+}
+.card-alt{
+  font-family:var(--mono);font-size:11px;color:var(--acero-400);font-style:normal;
+}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+.tag{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.03em;
+  padding:3px 8px;border-radius:999px;
+  background:var(--hueso-100);color:var(--grafito-800);
+  border:1px solid var(--line);
+}
+.tag.eq{
+  background:transparent;border-color:var(--grafito-600);color:var(--grafito-700);
+}
+.empty-state{
+  grid-column:1/-1;text-align:center;padding:64px 20px;
+  color:var(--acero-400);font-family:var(--mono);font-size:13px;
+}
+.empty-state strong{display:block;color:var(--grafito-900);font-family:var(--serif);font-size:19px;margin-bottom:8px;font-weight:700;}
+
+/* ===== Detail view ===== */
+.detail{
+  display:none;
+  max-width:920px;margin:0 auto;padding:40px 28px 90px;
+}
+.detail.show{display:block;}
+.library.hide, .hero.hide, .philosophy.hide, .planning.hide{display:none;}
+
+.detail-head{
+  display:flex;gap:20px;align-items:flex-start;
+  border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:28px;
+}
+.detail-plate{
+  flex:none;width:84px;height:84px;border-radius:50%;
+  background:linear-gradient(135deg, var(--grafito-800), var(--grafito-950));
+  display:flex;align-items:center;justify-content:center;
+  border:3px solid var(--grafito-700);
+  position:relative;
+}
+.detail-plate::before{
+  content:"";position:absolute;inset:8px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.detail-plate span{
+  font-family:var(--serif);font-weight:700;font-size:28px;color:var(--hueso-50);
+}
+.detail-titles .eyebrow{margin-bottom:6px;display:block;}
+.detail-titles h1{font-size:28px;margin:0 0 4px;}
+.detail-titles .alt{font-family:var(--mono);font-size:13px;color:var(--acero-400);}
+
+.detail-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+
+.detail-section{margin-bottom:30px;}
+.detail-section h2{
+  font-family:var(--mono);font-size:11px;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--oxido-500);margin:0 0 10px;
+}
+.enfoque-box{
+  background:var(--hueso-100);border-left:3px solid var(--oxido-500);
+  padding:14px 18px;font-size:14.5px;line-height:1.65;color:var(--grafito-800);
+  border-radius:0 var(--radius) var(--radius) 0;
+}
+
+.dose-row{display:flex;gap:28px;flex-wrap:wrap;align-items:center;}
+.dose-item .l{
+  font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--acero-400);margin-bottom:4px;
+}
+.dose-item .v{font-family:var(--serif);font-size:18px;font-weight:700;}
+.tempo-display{display:flex;align-items:center;gap:10px;}
+.tempo-segs{display:flex;gap:3px;}
+.tempo-seg{
+  width:30px;height:30px;border-radius:var(--radius);
+  background:var(--grafito-950);color:var(--hueso-50);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:600;font-size:13px;
+}
+.tempo-labels{
+  display:flex;gap:3px;margin-top:4px;
+}
+.tempo-labels span{
+  width:30px;text-align:center;font-family:var(--mono);font-size:8px;
+  color:var(--acero-400);text-transform:uppercase;letter-spacing:0.02em;
+}
+
+.steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+.steps li{
+  counter-increment:step;
+  display:flex;gap:16px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14.5px;line-height:1.65;color:var(--grafito-800);
+}
+.steps li:last-child{border-bottom:none;}
+.steps li::before{
+  content:counter(step);
+  flex:none;width:30px;height:30px;border-radius:50%;
+  border:1.5px solid var(--oxido-500);color:var(--oxido-500);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:13px;font-weight:600;
+}
+
+.video-link{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:11px 18px;border:1px solid var(--grafito-950);border-radius:var(--radius);
+  font-family:var(--mono);font-size:12.5px;letter-spacing:0.03em;
+  color:var(--hueso-50);background:var(--grafito-950);
+}
+.video-link:hover{background:var(--oxido-500);border-color:var(--oxido-500);}
+.video-note{
+  font-family:var(--mono);font-size:11.5px;color:var(--acero-400);margin-top:10px;
+}
+
+.nota-box{
+  background:var(--grafito-950);color:var(--hueso-100);
+  padding:18px 20px;border-radius:var(--radius);font-size:13.5px;line-height:1.65;
+}
+.nota-box b{color:var(--oxido-300);}
+
+.detail-nav{
+  display:flex;justify-content:space-between;margin-top:40px;
+  border-top:1px solid var(--line);padding-top:20px;
+}
+.nav-btn{
+  font-family:var(--mono);font-size:12px;color:var(--grafito-700);
+  display:flex;align-items:center;gap:8px;
+}
+.nav-btn:hover{color:var(--oxido-500);}
+.nav-btn .small{display:block;font-size:9.5px;color:var(--acero-400);text-transform:uppercase;letter-spacing:0.06em;}
+
+footer{
+  border-top:1px solid var(--line);
+  background:var(--grafito-950);color:var(--acero-400);
+  padding:28px 28px;text-align:center;
+  font-family:var(--mono);font-size:11px;letter-spacing:0.02em;
+}
+
+/* ===== Responsive ===== */
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:28px;}
+  .philosophy{grid-template-columns:1fr;}
+  .rules{grid-template-columns:1fr;}
+  .plan-grid{grid-template-columns:1fr;}
+  .topbar-meta{display:none;}
+  .filter-row{align-items:flex-start;}
+  .filter-row .flabel{width:100%;}
+  .detail-head{flex-direction:column;}
+}
+@media (max-width:520px){
+  .hero{padding:44px 18px 36px;}
+  .philosophy,.planning,.library{padding-left:18px;padding-right:18px;}
+  .grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr;}
+  .hero-stat{border-right:none;border-bottom:1px solid var(--grafito-700);}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-text">Manual de Flexibilidad Activa y Salud Estructural<small>Sistema de Entrenamiento en Rangos Máximos de Elongación para Deportes de Fuerza y Levantamiento de Peso</small></span>
+    </div>
+    <a href="#" class="back-link" id="backLink">← Volver a la biblioteca</a>
+    <div class="topbar-meta">
+      <span><b id="metaCount">37</b> ejercicios</span>
+      <span><b>11</b> bloques</span>
+    </div>
+  </div>
+</div>
+
+<section class="hero" id="heroSection">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Manual de flexibilidad activa y salud estructural</span>
+        <h1>PERSEVERANCIA Y ESFUERZO<br><em>PARA LOGRAR EL ÉXITO EN LA VIDA</em></h1>
+        <p class="lead">Biblioteca de 37 ejercicios de elongación activa para halterofilia, powerlifting y strongman: rangos máximos de movimiento entrenados con carga, tempo controlado y propósito biomecánico — no estiramiento pasivo de relajación.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="n">37</div><div class="l">Ejercicios técnicos</div></div>
+        <div class="hero-stat"><div class="n">11</div><div class="l">Bloques anatómicos</div></div>
+        <div class="hero-stat"><div class="n">8</div><div class="l">Zonas corporales</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+---Seccion Filosofia----
+<section class="philosophy" id="philosophySection">
+  <div class="side">
+    <span class="eyebrow">Filosofía</span>
+    <h2>La biomecánica del blindaje estructural</h2>
+    <p class="attrib">Mtra. María de Jesús Ortega León<br>Maestra en Entrenamiento de la Fuerza y Alto Rendimiento Deportivo
+      <br>Entrenadora en Jefe y Vicepresidenta de la Asociación Universitaria de Halterofilia</p>
+  </div>
+  <div class="body">
+    <p>En el mundo de la fuerza pesada se ha normalizado una idea delicada: pensar que para mover kilos masivos hay que estar rígido como un bloque de concreto. Es común confundir la estabilidad real con la simple falta de rango articular. Pero la realidad en la plataforma es despiadada: un levantador rígido es un atleta lleno de fugas de potencia, que gasta energía extra peleando contra su propio cuerpo y que vive a una continua exposición y tormento de sufrir un desgarro muscular o una
+rotura tendinosa.</p>
+    <p> la fuerza sin rango de movimiento es una bomba de tiempo. No
+importa qué tan fuertes sean de forma concéntrica; si no tienen un "colchón" de seguridad elástica
+en los rangos finales, cualquier repetición donde pierdan ligeramente el control técnico puede ser
+la última de su temporada. Construir ese blindaje con flexibilidad activa es lo que los mantendrá
+levantando kilos durante años</p>
+    <div class="rules">
+      <div class="rule-card">
+        <div class="ico">REGLA 01</div>
+        <h4>Tempo sagrado</h4>
+        <div class="sub">Fase excéntrica acentuada</div>
+        <p>Frena la bajada de forma lenta y controlada. Acelerar para rebotar anula la adaptación del tejido conectivo.</p>
+      </div>
+      <div class="rule-card">
+        <div class="ico">REGLA 02</div>
+        <h4>Rango antes que peso</h4>
+        <div class="sub">Progresión estricta</div>
+        <p>Domina la profundidad articular con técnica perfecta. Solo incrementa el peso cuando el rango final es controlado.</p>
+      </div>
+      <div class="rule-card">
+        <div class="ico">REGLA 03</div>
+        <h4>Monitorea la tensión</h4>
+        <div class="sub">Estiramiento vs. dolor</div>
+        <p>Incomodidad muscular bajo carga es deseable. Dolor articular agudo o bloqueo seco: detén la serie de inmediato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+---Sección Dosificación---
+<section class="planning" id="planningSection">
+  <h2>Planificación y dosificación semanal</h2>
+  <p>Para integrar este manual sin interferir con el volumen de los levantamientos principales (Sentadilla, Peso Muerto, Banca, Arranque, Envión), usa estas tres opciones de dosificación.</p>
+  <div class="plan-grid">
+    <div class="plan-card">
+      <div class="pnum">01</div>
+      <h3>Microdosis Diaria Integrada</h3>
+      <div class="sub">Preparación de la sesión pesada</div>
+      <p>2 a 3 ejercicios específicos antes de la tarima, o como corrección al finalizar el entrenamiento principal.</p>
+      <ul>
+        <li><b>Empuje / overhead:</b> rotación externa sentado, Powell o Trap-3.</li>
+        <li><b>Tracción / cadena posterior:</b> Couch Stretch, ATG Split o Curl Jefferson.</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <div class="pnum">02</div>
+      <h3>Bloques Divididos</h3>
+      <div class="sub">Post-entrenamiento especializado</div>
+      <p>Divide el manual en dos bloques al final de las sesiones, sin acumular fatiga central previa.</p>
+      <ul>
+        <li><b>Tren superior</b> (lun / jue): Bloques 1, 2, 3, 4, 10 y 11.</li>
+        <li><b>Tren inferior y zona media</b> (mar / vie): Bloques 5, 6, 7, 8 y 9.</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <div class="pnum">03</div>
+      <h3>Reset Estructural Completo</h3>
+      <div class="sub">Días de descanso activo / PFG</div>
+      <p>1 a 2 veces por semana. Ejercicios en secuencia, respetando descansos de 60 a 90 segundos: descompresión vertebral masiva y estimulación neuromuscular que acelera la recuperación.</p>
+    </div>
+  </div>
+</section>
+
+<section class="library" id="librarySection">
+  <div class="library-head">
+    <h2>Biblioteca de ejercicios</h2>
+    <span class="result-count"><b id="resultCount">37</b> resultados</span>
+  </div>
+
+  <div class="filters">
+    <div class="filter-row search-row">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="searchInput" placeholder="Buscar ejercicio, músculo o palabra clave…">
+    </div>
+    <div class="filter-row">
+      <span class="flabel">Bloque</span>
+      <div id="blockChips"></div>
+    </div>
+    <div class="filter-row">
+      <span class="flabel">Zona corporal</span>
+      <div id="zoneChips"></div>
+    </div>
+    <div class="filter-row">
+      <span class="flabel">Equipo</span>
+      <div id="equipChips"></div>
+    </div>
+    <button class="clear-filters" id="clearFilters">Limpiar todos los filtros ×</button>
+  </div>
+
+  <div class="grid" id="exerciseGrid"></div>
+</section>
+
+<div class="detail" id="detailView"></div>
+
+<footer>
+  Manual de Flexibilidad Activa y Salud Estructural — Sistema de Entrenamiento en Rangos Máximos de Elongación · Contenido íntegro del manual original
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  const grid = document.getElementById('exerciseGrid');
+  const blockChipsEl = document.getElementById('blockChips');
+  const zoneChipsEl = document.getElementById('zoneChips');
+  const equipChipsEl = document.getElementById('equipChips');
+  const searchInput = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('clearFilters');
+  const resultCount = document.getElementById('resultCount');
+  const detailView = document.getElementById('detailView');
+  const backLink = document.getElementById('backLink');
+  const sections = ['heroSection','philosophySection','planningSection','librarySection'];
+
+  let state = { block: null, zone: null, equip: null, q: '' };
+
+  function blockTitle(id){
+    const b = BLOCKS.find(b=>b.id===id);
+    return b ? `Bloque ${id} — ${b.title}` : '';
+  }
+  function zoneLabel(id){
+    const z = ZONES.find(z=>z.id===id);
+    return z ? z.label : id;
+  }
+  function equipLabel(id){
+    const e = EQUIPMENT.find(e=>e.id===id);
+    return e ? e.label : id;
+  }
+
+  function buildChips(container, items, key, getCount){
+    container.innerHTML = '';
+    items.forEach(item=>{
+      const chip = document.createElement('button');
+      chip.className = 'chip';
+      chip.type = 'button';
+      const count = getCount(item.id);
+      chip.innerHTML = `${item.label || item.title || ('Bloque '+item.id)}<span class="count">${count}</span>`;
+      chip.addEventListener('click', ()=>{
+        state[key] = state[key] === item.id ? null : item.id;
+        render();
+      });
+      container.appendChild(chip);
+    });
+  }
+
+  function setupChips(){
+    buildChips(blockChipsEl, BLOCKS.map(b=>({id:b.id,label:'B'+b.id})), 'block',
+      (id)=>EXERCISES.filter(e=>e.block===id).length);
+    buildChips(zoneChipsEl, ZONES, 'zone',
+      (id)=>EXERCISES.filter(e=>e.zones.includes(id)).length);
+    buildChips(equipChipsEl, EQUIPMENT, 'equip',
+      (id)=>EXERCISES.filter(e=>e.equipment.includes(id)).length);
+  }
+
+  function refreshChipStates(){
+    [...blockChipsEl.children].forEach((c,i)=>c.classList.toggle('active', state.block===BLOCKS[i].id));
+    [...zoneChipsEl.children].forEach((c,i)=>c.classList.toggle('active', state.zone===ZONES[i].id));
+    [...equipChipsEl.children].forEach((c,i)=>c.classList.toggle('active', state.equip===EQUIPMENT[i].id));
+    clearBtn.classList.toggle('show', !!(state.block||state.zone||state.equip||state.q));
+  }
+
+  function matches(ex){
+    if(state.block && ex.block !== state.block) return false;
+    if(state.zone && !ex.zones.includes(state.zone)) return false;
+    if(state.equip && !ex.equipment.includes(state.equip)) return false;
+    if(state.q){
+      const hay = (ex.name + ' ' + (ex.altName||'') + ' ' + (ex.enfoque||'')).toLowerCase();
+      if(!hay.includes(state.q.toLowerCase())) return false;
+    }
+    return true;
+  }
+
+  function cardHTML(ex){
+    const b = BLOCKS.find(b=>b.id===ex.block);
+    const tagsZones = ex.zones.map(z=>`<span class="tag">${zoneLabel(z)}</span>`).join('');
+    const tagsEq = ex.equipment.map(eq=>`<span class="tag eq">${equipLabel(eq)}</span>`).join('');
+    return `
+      <article class="card" data-id="${ex.id}" tabindex="0" role="button" aria-label="Ver ${ex.name}">
+        <div class="card-plate">
+          <span class="block-tag">Bloque ${ex.block}<br>${b.title.split(',')[0]}</span>
+          <span class="card-id">${String(ex.id).padStart(2,'0')}</span>
+        </div>
+        <div class="card-body">
+          <h3>${ex.name}</h3>
+          ${ex.altName ? `<span class="card-alt">${ex.altName}</span>` : ''}
+          <div class="card-tags">${tagsZones}${tagsEq}</div>
+        </div>
+      </article>
+    `;
+  }
+
+  function render(){
+    refreshChipStates();
+    const filtered = EXERCISES.filter(matches);
+    resultCount.textContent = filtered.length;
+    document.getElementById('metaCount').textContent = EXERCISES.length;
+    if(filtered.length === 0){
+      grid.innerHTML = `<div class="empty-state"><strong>Sin coincidencias</strong>Ningún ejercicio cumple estos filtros. Prueba quitando alguno.</div>`;
+    } else {
+      grid.innerHTML = filtered.map(cardHTML).join('');
+    }
+    [...grid.querySelectorAll('.card')].forEach(card=>{
+      card.addEventListener('click', ()=>openDetail(parseInt(card.dataset.id)));
+      card.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openDetail(parseInt(card.dataset.id)); }});
+    });
+  }
+
+  function tempoHTML(tempo){
+    // tempo string like "3-0-1-0"
+    const parts = tempo.match(/(\d+)-(\d+)-(\d+)-(\d+)/);
+    if(!parts) return '';
+    const labels = ['Bajada','Pausa','Subida','Pausa'];
+    return `
+      <div class="tempo-display">
+        <div>
+          <div class="tempo-segs">
+            ${[1,2,3,4].map(i=>`<div class="tempo-seg">${parts[i]}</div>`).join('')}
+          </div>
+          <div class="tempo-labels">${labels.map(l=>`<span>${l.slice(0,4)}</span>`).join('')}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function videoNote(ex){
+    if(ex.video){
+      return `<a class="video-link" href="${ex.video}" target="_blank" rel="noopener">▶ Ver demostración en video</a>`;
+    }
+    if(ex.groupVideo){
+      const groupLinks = {
+        grip: 'https://www.instagram.com/reel/DZT9kP9yD8j/?igsh=MXNxN2IwcHpka2xvbA==',
+        ankle: 'https://www.instagram.com/reel/DXmv_A7CHxG/?igsh=YjFpbnBlaWN1eGNh',
+        circuito: 'https://www.instagram.com/reel/DZK5cBfoZA8/?igsh=bTJ3ZXZneWlxa3l6',
+      };
+      const link = groupLinks[ex.groupVideo];
+      return `<a class="video-link" href="${link}" target="_blank" rel="noopener">▶ Ver demostración del bloque</a><p class="video-note">Este ejercicio comparte la referencia visual de su bloque en el manual original.</p>`;
+    }
+    return `<p class="video-note">Sin referencia de video específica en el manual para este ejercicio.</p>`;
+  }
+
+  function openDetail(id){
+    const ex = EXERCISES.find(e=>e.id===id);
+    if(!ex) return;
+    sections.forEach(s=>document.getElementById(s).classList.add('hide'));
+    backLink.style.display = 'flex';
+    detailView.classList.add('show');
+
+    const doseParts = (ex.dosificacion||'').split('Tempo');
+    const seriesText = doseParts[0] ? doseParts[0].trim().replace(/\.$/,'') : '';
+    const tempoMatch = (ex.dosificacion||'').match(/(\d+-\d+-\d+-\d+)/);
+
+    const idx = EXERCISES.findIndex(e=>e.id===id);
+    const prev = EXERCISES[idx-1];
+    const next = EXERCISES[idx+1];
+
+    detailView.innerHTML = `
+      <div class="detail-head">
+        <div class="detail-plate"><span>${String(ex.id).padStart(2,'0')}</span></div>
+        <div class="detail-titles">
+          <span class="eyebrow">${blockTitle(ex.block)}</span>
+          <h1>${ex.name}</h1>
+          ${ex.altName ? `<span class="alt">${ex.altName}</span>` : ''}
+          <div class="detail-tags">
+            ${ex.zones.map(z=>`<span class="tag">${zoneLabel(z)}</span>`).join('')}
+            ${ex.equipment.map(eq=>`<span class="tag eq">${equipLabel(eq)}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      ${ex.enfoque ? `
+      <div class="detail-section">
+        <h2>Enfoque</h2>
+        <div class="enfoque-box">${ex.enfoque}</div>
+      </div>` : ''}
+
+      ${ex.objetivo ? `
+      <div class="detail-section">
+        <h2>Objetivo</h2>
+        <div class="enfoque-box">${ex.objetivo}</div>
+      </div>` : ''}
+
+      ${ex.dosificacion ? `
+      <div class="detail-section">
+        <h2>Dosificación</h2>
+        <div class="dose-row">
+          <div class="dose-item">
+            <div class="l">Series / repeticiones</div>
+            <div class="v">${seriesText}</div>
+          </div>
+          ${tempoMatch ? `
+          <div class="dose-item">
+            <div class="l">Tempo (bajada–pausa–subida–pausa, en segundos)</div>
+            ${tempoHTML(tempoMatch[1])}
+          </div>` : ''}
+        </div>
+      </div>` : ''}
+
+      <div class="detail-section">
+        <h2>Técnica</h2>
+        <ol class="steps">
+          ${ex.tecnica.map(t=>`<li>${t}</li>`).join('')}
+        </ol>
+      </div>
+
+      ${ex.nota ? `
+      <div class="detail-section">
+        <h2>Nota anatómica</h2>
+        <div class="nota-box">${ex.nota}</div>
+      </div>` : ''}
+
+      <div class="detail-section" style="margin-bottom:0;">
+        <h2>Referencia visual</h2>
+        ${videoNote(ex)}
+      </div>
+
+      <div class="detail-nav">
+        ${prev ? `<a class="nav-btn" href="#" data-nav="${prev.id}"><span><span class="small">Anterior</span>${prev.name}</span></a>` : '<span></span>'}
+        ${next ? `<a class="nav-btn" href="#" data-nav="${next.id}" style="text-align:right;justify-content:flex-end;"><span><span class="small">Siguiente</span>${next.name}</span></a>` : '<span></span>'}
+      </div>
+    `;
+
+    [...detailView.querySelectorAll('[data-nav]')].forEach(btn=>{
+      btn.addEventListener('click', (e)=>{ e.preventDefault(); openDetail(parseInt(btn.dataset.nav)); window.scrollTo({top:0,behavior:'smooth'}); });
+    });
+
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function closeDetail(){
+    sections.forEach(s=>document.getElementById(s).classList.remove('hide'));
+    backLink.style.display = 'none';
+    detailView.classList.remove('show');
+    detailView.innerHTML = '';
+  }
+
+  backLink.addEventListener('click', (e)=>{ e.preventDefault(); closeDetail(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+  searchInput.addEventListener('input', (e)=>{ state.q = e.target.value; render(); });
+  clearBtn.addEventListener('click', ()=>{ state = {block:null,zone:null,equip:null,q:''}; searchInput.value=''; render(); });
+
+  setupChips();
+  render();
+})();
+</script>
+</body>
+</html>
