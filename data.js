@@ -1,6 +1,18 @@
 // Datos extraídos íntegramente de "Manual de Flexibilidad Activa y Salud Estructural"
 // Sistema de Entrenamiento en Rangos Máximos de Elongación para Deportes de Fuerza y Levantamiento Pesado
 // Orden y contenido tal como aparecen en el documento original.
+//
+// Cada ejercicio ahora incluye un campo `media`: un arreglo de imágenes o GIFs propios
+// ({ type: "image"|"gif", src, alt }). Para agregar tu material:
+//   1. Copia el archivo (jpg/png/gif) dentro de la carpeta assets/exercises/
+//   2. Agrégalo al arreglo `media` del ejercicio correspondiente, ej:
+//      media: [{ type: "gif", src: "assets/exercises/ex04.gif", alt: "T alternada prono" }]
+// Un ejercicio sin fotos propias todavía puede dejar `media: []` — la biblioteca
+// muestra automáticamente un espacio reservado en su lugar.
+//
+// Integración futura con la API de Hevy (api-key, endpoints, vocabulario de
+// músculos/equipo): ver hevy-integration.js — ese archivo todavía no está
+// conectado a esta página a propósito, solo deja la estructura lista.
 
 const BLOCKS = [
   { id: 1, title: "Cintura Escapular, Hombro y Manguito Rotador", zone: "hombro" },
@@ -38,6 +50,7 @@ const EQUIPMENT = [
   { id: "pesa_rusa", label: "Pesa rusa" },
 ];
 
+
 const EXERCISES = [
   {
     id: 1,
@@ -45,9 +58,13 @@ const EXERCISES = [
     name: "Rotación Externa Sentado",
     altName: "Seated DB External Rotation",
     zones: ["hombro"],
-    equipment: ["mancuerna", "banco"],
+    equipment: ["mancuerna", "banco", "banda"],
+    media: [
+      { type: "image", src: "assets/exercises/ex01-a.jpg", alt: "Rotación externa sentado — posición inicial" },
+      { type: "image", src: "assets/exercises/ex01-b.jpg", alt: "Rotación externa sentado — posición final" },
+    ],
     enfoque: "Infraespinoso, redondo menor y fijadores posteriores del hombro (básicos para evitar que el hombro se desplace hacia adelante en el press de banca o la recepción del arranque).",
-    dosificacion: "3 a 4 series por lado x 8 a 10 repeticiones. Tempo 3-0-1-0.",
+    dosificacion: "3 a 4 series por lado. 8 a 10 repeticiones. Tempo 3-0-1-0.",
     tecnica: [
       "Siéntate en un banco, apoya firmemente el pie sobre la superficie para colocar de forma estable el codo sobre tu rodilla a la altura del hombro, manteniendo un ángulo recto de 90 grados.",
       "Realiza un descenso excéntrico controlado de la mancuerna hacia adelante, contando 3 segundos de bajada milimétrica y cuidando de no deprimir el hombro ni compensar inclinando el torso.",
@@ -62,6 +79,10 @@ const EXERCISES = [
     altName: "Powell Raise",
     zones: ["hombro"],
     equipment: ["mancuerna", "banco"],
+    media: [
+      { type: "image", src: "assets/exercises/ex02-a.jpg", alt: "Elevación Powell — posición inicial" },
+      { type: "image", src: "assets/exercises/ex02-b.jpg", alt: "Elevación Powell — posición final" },
+    ],
     enfoque: "Deltoides posterior, romboides y trapecio medio (músculos que frenan la barra en la bajada del press de banca y estabilizan la espalda alta en la sentadilla).",
     dosificacion: "3 series por lado x 10 a 12 repeticiones. Tempo 3-0-1-1.",
     tecnica: [
@@ -78,6 +99,9 @@ const EXERCISES = [
     altName: "Cable Face Pull",
     zones: ["hombro"],
     equipment: ["cable"],
+    media: [
+      { type: "image", src: "assets/exercises/ex03.jpg", alt: "Tirón de cara con cable en polea alta" },
+    ],
     enfoque: "Deltoides posterior, rotadores externos y retractores escapulares (esenciales para mantener la barra pegada al cuerpo durante el jalón de halterofilia o el peso muerto).",
     dosificacion: "3 series x 12 a 15 repeticiones. Tempo 2-1-1-2.",
     tecnica: [
@@ -94,6 +118,7 @@ const EXERCISES = [
     altName: "Prone Alternate T-Raise",
     zones: ["hombro"],
     equipment: ["ninguno"],
+    media: [],
     enfoque: "Trapecio medio, romboides y deltoides posterior (necesarios para fijar la barra firmemente sobre la espalda en la sentadilla baja o low bar squat).",
     dosificacion: "3 series x 12 a 15 repeticiones. Tempo 2-1-1-1.",
     tecnica: [
@@ -110,6 +135,9 @@ const EXERCISES = [
     altName: "Prone Inverted Y-Raise",
     zones: ["hombro"],
     equipment: ["ninguno"],
+    media: [
+      { type: "image", src: "assets/exercises/ex05.jpg", alt: "Y inversa prono con discos" },
+    ],
     enfoque: "Deltoides posterior, tríceps largo y dorsal en acortamiento máximo (vital para estabilizar el bloqueo overhead en el arranque o snatch, mantener los hombros firmes en la banca y evitar que la barra se ruede en la sentadilla barra baja).",
     dosificacion: "3 series x 12 a 15 repeticiones. Tempo 2-0-1-2.",
     tecnica: [
@@ -126,6 +154,7 @@ const EXERCISES = [
     altName: "Dumbbell Pullover",
     zones: ["toracico"],
     equipment: ["mancuerna", "banco"],
+    media: [],
     enfoque: "Dorsal ancho, pectoral mayor, cabeza larga del tríceps y erectores torácicos (esencial para ganar la apertura torácica requerida en la recepción del clin).",
     dosificacion: "3 series x 10 a 12 repeticiones. Tempo 4-1-1-0.",
     tecnica: [
@@ -142,6 +171,7 @@ const EXERCISES = [
     altName: "Barbell Pullover",
     zones: ["toracico"],
     equipment: ["barra", "banco"],
+    media: [],
     enfoque: "Dorsal ancho, pectoral mayor, porción larga del tríceps y extensión torácica (vital para empujar la barra contra tus espinillas en el peso muerto y mantener un bloqueo overhead vertical y firme en el envión o yerk).",
     dosificacion: "3 series x 10 a 12 repeticiones. Tempo 4-1-1-0.",
     tecnica: [
@@ -158,6 +188,7 @@ const EXERCISES = [
     altName: "Incline Prone Raise",
     zones: ["toracico"],
     equipment: ["mancuerna", "banco"],
+    media: [],
     enfoque: "Cadena posterior alta, erectores torácicos y ritmo de la escápula (vital para fijar el soporte de la barra en la sentadilla, consolidar el arco rígido en el press de banca y evitar que los hombros se vayan hacia adelante en el peso muerto).",
     dosificacion: "3 series x 12 repeticiones. Tempo 2-1-1-1.",
     tecnica: [
@@ -174,6 +205,7 @@ const EXERCISES = [
     altName: "Trap 3 Raise",
     zones: ["hombro"],
     equipment: ["mancuerna", "banco"],
+    media: [],
     enfoque: "Porción inferior del trapecio (Zona 3) y erectores torácicos (el músculo clave que evita que la espalda alta se 'venza' o se redondee al sacar un peso muerto pesado o al recibir un levantamiento).",
     dosificacion: "3 series x 10 repeticiones. Tempo 3-0-1-2.",
     tecnica: [
@@ -198,6 +230,8 @@ const EXERCISES = [
       "Inicia el descenso bajando los brazos de manera milimétrica y continua, contando mentalmente 8 segundos completos para de esta manera frenar el peso de forma uniforme sin tirones.",
     ],
     nota: "Nota anatómica del trapecio: el músculo se divide en tres porciones. Las fibras de la porción inferior o Trap-3 deprimen las escápulas y recorren de forma descendente toda la columna torácica, anclándose justo por encima de la zona lumbar. Entrenar esta zona en rangos de máxima elongación le da un soporte inquebrantable a los omóplatos, previniendo pinzamientos en los levantamientos.",
+    media: [],
+    notaImage: "assets/exercises/ex10-trapecio.jpg",
     video: null,
   },
   {
@@ -207,6 +241,7 @@ const EXERCISES = [
     altName: "Prone Wrist Extension",
     zones: ["antebrazo"],
     equipment: ["banda"],
+    media: [],
     enfoque: "Extensores del antebrazo y extensor carpi radialis (esenciales para construir la fuerza de soporte en el eje de la muñeca al recibir la barra).",
     dosificacion: "3 series x 10 repeticiones estrictas. Tempo 2-1-1-1.",
     tecnica: [
@@ -224,6 +259,7 @@ const EXERCISES = [
     altName: "Radial Deviation",
     zones: ["antebrazo"],
     equipment: ["banda"],
+    media: [],
     enfoque: "Músculo braquiorradial y estabilizadores laterales del carpo (soporte estructural clave para la fase de bloqueo del yerk o empuje).",
     dosificacion: "3 series x 8 repeticiones controladas. Tempo 3-0-1-1.",
     tecnica: [
@@ -241,6 +277,7 @@ const EXERCISES = [
     altName: "Dynamic Forearm Pronation",
     zones: ["antebrazo"],
     equipment: ["banda"],
+    media: [],
     enfoque: "Pronador redondo y flexor radial del carpo (básicos para bloquear el agarre en pronación en el peso muerto).",
     dosificacion: "3 series x 12 repeticiones. Tempo 2-0-1-2.",
     tecnica: [
@@ -258,6 +295,7 @@ const EXERCISES = [
     altName: "Supinated Wrist Flexion",
     zones: ["antebrazo"],
     equipment: ["banda"],
+    media: [],
     enfoque: "Flexores profundos de los dedos y cara anterior del antebrazo (los músculos primarios de trituración del agarre o crush grip, vitales para asegurar el gancho en el hook grip, reventar el peso muerto sin que se resbale la barra y proteger los codos).",
     dosificacion: "3 a 4 series x 10 repeticiones estrictas. Tempo 3-1-1-1.",
     tecnica: [
@@ -275,6 +313,7 @@ const EXERCISES = [
     altName: "QL Raise",
     zones: ["columna"],
     equipment: ["banco"],
+    media: [],
     enfoque: "Cuadrado lumbar, oblicuos y estabilizadores laterales lumbares (el músculo estabilizador profundo que previene asimetrías de cadera al sacar la barra del suelo).",
     dosificacion: "3 series por lado x 8 a 10 repeticiones. Tempo 3-1-1-0.",
     tecnica: [
@@ -291,6 +330,7 @@ const EXERCISES = [
     altName: "Jefferson Curl",
     zones: ["columna"],
     equipment: ["barra", "ninguno"],
+    media: [],
     enfoque: "Isquiotibiales, glúteos, erectores de columna y descompresión de la fascia toracolumbar (vital para eliminar la rigidez y presión en la espalda baja tras sesiones de cargas axiales masivas como sentadillas o pesos muertos pesados).",
     dosificacion: "3 series x 5 a 8 repeticiones muy concentradas. Tempo 5-0-5-0.",
     tecnica: [
@@ -307,6 +347,7 @@ const EXERCISES = [
     altName: "Prone Full-Chain Extension",
     zones: ["columna"],
     equipment: ["ninguno"],
+    media: [],
     enfoque: "Erectores de columna completos, glúteos, isquiotibiales y hombro posterior (vital para mantener el torso firme en el despegue del peso muerto, fijar la espalda en el press de banca y evitar que la barra te doble la espalda alta).",
     dosificacion: "3 series x 10 a 12 repeticiones (o 30s en isometría). Tempo 2-2-1-0.",
     tecnica: [
@@ -323,6 +364,7 @@ const EXERCISES = [
     altName: "Seated Hip Opener",
     zones: ["cadera"],
     equipment: ["ninguno"],
+    media: [],
     enfoque: "Rotadores de cadera, piramidal y cápsula iliofemoral (vital para lograr la apertura de pies en el stance de sentadilla sumo o squat profundo).",
     dosificacion: "2-3 series x 45-60 segundos de exploración fluida.",
     tecnica: [
@@ -339,6 +381,7 @@ const EXERCISES = [
     altName: "Loaded Butterfly Stretch",
     zones: ["cadera"],
     equipment: ["mancuerna"],
+    media: [],
     enfoque: "Aductores (mayor/largo/corto), pectíneo y flexores de la ingle (vital para evitar que las rodillas colapsen hacia adentro al salir de la profundidad y prevenir que la pelvis se redondee en sentadillas profundas o arranques).",
     dosificacion: "3 series x 60 segundos de sostén estático-activo continuo.",
     tecnica: [
@@ -355,6 +398,7 @@ const EXERCISES = [
     altName: "Couch Stretch",
     zones: ["cadera"],
     equipment: ["ninguno"],
+    media: [],
     enfoque: "Psoas ilíaco (flexor profundo) y recto femoral del cuádriceps (eliminar la tensión anterior que jala la pelvis y causa dolor lumbar al extender el peso muerto).",
     dosificacion: "3 series por pierna x 1 minuto continuo por lado.",
     tecnica: [
@@ -371,6 +415,7 @@ const EXERCISES = [
     altName: "ATG Split Squat",
     zones: ["rodilla"],
     equipment: ["mancuerna"],
+    media: [],
     enfoque: "Cuádriceps (énfasis VMO o vasto medial), tendón rotuliano y dorsiflexión profunda (el blindaje ideal para las rodillas de un powerlifter y halterista).",
     dosificacion: "3-4 series por pierna x 5-8 repeticiones. Tempo 3-2-1-0.",
     tecnica: [
@@ -387,6 +432,7 @@ const EXERCISES = [
     altName: null,
     zones: ["tobillo"],
     equipment: ["banda"],
+    media: [],
     enfoque: "Músculo tibial anterior y ligamentos estabilizadores del tobillo (básico para no perder la estabilidad del pie bajo 200 kg, asegurar un trípode plantar sólido en la sentadilla profunda y evitar que los tobillos colapsen hacia adentro).",
     dosificacion: "3 series por pie x 10 repeticiones estrictas. Tempo 3-0-1-1.",
     tecnica: [
@@ -404,6 +450,7 @@ const EXERCISES = [
     altName: null,
     zones: ["tobillo"],
     equipment: ["banda"],
+    media: [],
     enfoque: "Músculos peroneos y estabilización del arco plantar profundo (evita que el pie colapse hacia adentro en la sentadilla).",
     dosificacion: "3 series por lado x 8 repeticiones controladas. Tempo 2-1-1-1.",
     tecnica: [
@@ -421,6 +468,7 @@ const EXERCISES = [
     altName: null,
     zones: ["tobillo"],
     equipment: ["mancuerna"],
+    media: [],
     enfoque: "Descompresión del tendón de Aquiles y fortalecimiento del sóleo (manejo preventivo contra la rigidez severa provocada por el tacón del calzado de halterofilia, vital para mantener una dorsiflexión profunda y saludable sin dolor al recibir la barra).",
     dosificacion: "3 series por pierna x 8 repeticiones muy lentas. Tempo 4-2-1-0.",
     tecnica: [
@@ -438,6 +486,7 @@ const EXERCISES = [
     altName: "Deficit Single-Leg Achilles Drop",
     zones: ["tobillo"],
     equipment: ["ninguno"],
+    media: [],
     enfoque: "Tendón de Aquiles, fascia plantar y rango de dorsiflexión extendido.",
     dosificacion: "3 series por pierna x 12 repeticiones. Tempo 3-2-1-0.",
     tecnica: [
@@ -455,6 +504,7 @@ const EXERCISES = [
     altName: null,
     zones: ["tobillo"],
     equipment: ["pesa_rusa"],
+    media: [],
     enfoque: "Mecanorreceptores, propiocepción reactiva balística y estabilidad lumbo-pélvica (esencial para strongman al caminar con yugo o maletas, y vital para bloquear con total firmeza la base de sustentación unilateral en los desplantes del envión o yerk).",
     dosificacion: "3 series por pierna x 30-45 segundos o 12-16 atrapes. Ritmo constante.",
     tecnica: [
@@ -472,6 +522,7 @@ const EXERCISES = [
     altName: "Deficit Calf Raise",
     zones: ["tobillo"],
     equipment: ["ninguno"],
+    media: [],
     enfoque: "Gastrocnemio, sóleo y elasticidad reactiva del tendón (vital para maximizar la triple extensión explosiva en el jalón de arranque o cargada, y para absorber el impacto de forma segura al recibir el peso abajo).",
     dosificacion: "3 a 4 series x 10 a 12 repeticiones estrictas. Tempo 3-1-1-1.",
     tecnica: [
@@ -489,6 +540,7 @@ const EXERCISES = [
     altName: "Toe Squat",
     zones: ["pie"],
     equipment: ["ninguno"],
+    media: [],
     enfoque: "Fascia plantar, flexores del dedo gordo y tendón de Aquiles (el secreto para mejorar el enraizamiento y la transferencia elástica del pie contra el suelo).",
     dosificacion: "2 a 3 series x 45 a 60 segundos de sostén isométrico continuo.",
     tecnica: [
@@ -505,6 +557,7 @@ const EXERCISES = [
     altName: null,
     zones: ["hombro"],
     equipment: ["banda"],
+    media: [],
     tecnica: [
       "Recuéstate boca arriba (supino) en el suelo con la cabeza apuntando directamente hacia el punto bajo de agarre de tu banda elástica.",
       "Estira tus brazos por completo hacia atrás sosteniendo la banda con ambas manos bajo una tensión elástica constante overhead.",
@@ -520,6 +573,9 @@ const EXERCISES = [
     altName: null,
     zones: ["hombro", "toracico"],
     equipment: ["banda"],
+    media: [
+      { type: "image", src: "assets/exercises/ex30.jpg", alt: "Extensión torácica prona overhead con banda" },
+    ],
     tecnica: [
       "Acuéstate boca abajo (prono) en el suelo mirando de frente hacia el punto de agarre de la banda elástica.",
       "Sostén la banda con los brazos totalmente estirados por encima de tu cabeza conservando la tensión lineal estricta.",
@@ -535,6 +591,7 @@ const EXERCISES = [
     altName: "Prone Band T-Pull",
     zones: ["hombro"],
     equipment: ["banda"],
+    media: [],
     tecnica: [
       "Adopta la posición boca abajo en el suelo, estirando tus brazos al frente mientras sostienes la banda elástica.",
       "Abre los brazos en un plano horizontal hacia los costados hasta de esta manera dibujar una letra T perfecta con tu cuerpo.",
@@ -549,6 +606,7 @@ const EXERCISES = [
     altName: null,
     zones: ["hombro", "toracico"],
     equipment: ["banda"],
+    media: [],
     tecnica: [
       "Colócate boca arriba en el suelo, iniciando con tus brazos apuntando de manera vertical hacia el techo mientras sostienes la banda.",
       "Con tus codos totalmente bloqueados al 100%, jala la banda elástica hacia abajo dirigiéndola hacia los costados de tus caderas.",
@@ -563,6 +621,7 @@ const EXERCISES = [
     altName: "Prone W-Row",
     zones: ["hombro"],
     equipment: ["banda"],
+    media: [],
     tecnica: [
       "En posición boca abajo en el suelo, estira tus brazos hacia adelante apuntando al punto de agarre de la banda elástica.",
       "Jala la banda flexionando tus codos hacia afuera y abajo, simulando una letra W con tus brazos y el torso.",
@@ -577,6 +636,9 @@ const EXERCISES = [
     altName: "Supine Row to Chest",
     zones: ["hombro"],
     equipment: ["banda"],
+    media: [
+      { type: "image", src: "assets/exercises/ex34.jpg", alt: "Tirón supino al pecho / curl escapular" },
+    ],
     tecnica: [
       "Acuéstate boca arriba con tus brazos extendidos al frente sosteniendo la banda elástica con un agarre firme.",
       "Jala la banda flexionando los codos y apoyándolos firmemente en el suelo bien pegados a las costillas de forma simétrica.",
@@ -592,6 +654,9 @@ const EXERCISES = [
     altName: null,
     zones: ["hombro", "toracico"],
     equipment: ["rig"],
+    media: [
+      { type: "image", src: "assets/exercises/ex35.jpg", alt: "Estiramiento de flexión de hombro contra rig" },
+    ],
     enfoque: "Flexión máxima de hombro, dorsal ancho y extensión torácica profunda (el secreto para mejorar la verticalidad del bloqueo o lockout overhead, evitar que la barra se vaya hacia adelante en el arranque y garantizar una base indestructible para sostener un Log Press o un Axle Press pesado en Strongman).",
     dosificacion: "3 series x 45 a 60 segundos de sostén estático-activo continuo.",
     tecnica: [
@@ -608,6 +673,7 @@ const EXERCISES = [
     altName: "Band Shoulder Dislocates",
     zones: ["hombro"],
     equipment: ["banda"],
+    media: [],
     enfoque: "Movilidad glenohumeral, pectoral mayor y deltoides anterior (básico para mantener los hombros saludables ante el estrés del press de banca o levantamientos olímpicos).",
     dosificacion: "3 series x 10 a 12 repeticiones continuas. Tempo 3-0-3-0.",
     tecnica: [
@@ -624,6 +690,10 @@ const EXERCISES = [
     altName: null,
     zones: ["hombro"],
     equipment: ["banda", "rig"],
+    media: [
+      { type: "image", src: "assets/exercises/ex37-a.jpg", alt: "Rotación interna con banda contra rig — vista 1" },
+      { type: "image", src: "assets/exercises/ex37-b.jpg", alt: "Rotación interna con banda contra rig — vista 2" },
+    ],
     enfoque: "Rotación interna, cápsula posterior del hombro y deltoides anterior (esencial para evitar pellizcos articulares al recibir la barra sobre los hombros).",
     dosificacion: "3 series x 45 segundos de sostén o 10 repeticiones controladas.",
     tecnica: [
@@ -634,6 +704,15 @@ const EXERCISES = [
     video: null,
   },
 ];
+
+// Enlaces de video compartidos por bloque (cuando varios ejercicios de un
+// mismo bloque remiten al mismo Reel/short de referencia en el manual original).
+const GROUP_VIDEOS = {
+  grip: "https://www.instagram.com/reel/DZT9kP9yD8j/?igsh=MXNxN2IwcHpka2xvbA==",
+  ankle: "https://www.instagram.com/reel/DXmv_A7CHxG/?igsh=YjFpbnBlaWN1eGNh",
+  circuito: "https://www.instagram.com/reel/DZK5cBfoZA8/?igsh=bTJ3ZXZneWlxa3l6",
+};
+
 
 // Notas de dosificación grupal para bloques sin enfoque/dosificación individual (Bloque 10 y 11 parcial)
 const BLOCK_INTRO = {
