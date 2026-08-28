@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flexibilidad Activa — Manual de Movilidad para Fuerza</title>
+<meta name="description" content="Biblioteca de 37 ejercicios de elongación activa para halterofilia, powerlifting y strongman.">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================================================
+     TOPBAR — logo + navegación por pestañas (Inicio / Biblioteca)
+     ============================================================ -->
+<nav class="topbar">
+  <a href="#/" class="brand">
+    <svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="10.5" stroke="var(--hueso-100)" stroke-width="2.6"/>
+      <circle cx="16" cy="16" r="10.5" stroke="var(--oxido-500)" stroke-width="2.6" stroke-linecap="round"
+        stroke-dasharray="46 66" transform="rotate(-90 16 16)"/>
+      <circle cx="16" cy="5.5" r="2.4" fill="var(--oxido-500)"/>
+    </svg>
+    <span class="brand-word">Flexibilidad Activa<small>Sistema de rangos máximos</small></span>
+  </a>
+
+  <div class="tabs" role="tablist" aria-label="Navegación principal">
+    <a href="#/" class="tab" data-route="/" role="tab">Inicio</a>
+    <a href="#/biblioteca" class="tab" data-route="/biblioteca" role="tab">Biblioteca</a>
+    <!-- INSERCIÓN: dos pestañas nuevas (Información / Glosario) -->
+    <a href="#/informacion" class="tab" data-route="/informacion" role="tab">Información</a>
+    <a href="#/glosario" class="tab" data-route="/glosario" role="tab">Glosario</a>
+    <div class="tab-indicator" id="tabIndicator"></div>
+  </div>
+
+  <div class="topbar-actions">
+    <a href="#/biblioteca" class="icon-btn" aria-label="Buscar ejercicio" title="Buscar ejercicio">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    </a>
+  </div>
+</nav>
+
+<main id="app">
+
+  <!-- ============================================================
+       VISTA: INICIO
+       ============================================================ -->
+  <section class="view" id="view-home">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">MANUAL DE FLEXIBILIDAD ACTIVA Y SALUD ESTRUCTURAL</span>
+          <h1>Perseverancia y esfuerzo<br>para <em>lograr el éxito</em> en la vida</h1>
+          <p class="lead">Biblioteca de 37 ejercicios de elongación activa para halterofilia, powerlifting y strongman: rangos máximos de movimiento entrenados con carga, tempo controlado y propósito biomecánico — no estiramiento pasivo de relajación.</p>
+          <div class="hero-ctas">
+            <a href="#/biblioteca" class="btn btn-accent">Explorar la biblioteca</a>
+            <a href="#philosophy" class="btn btn-ghost">Ver la filosofía <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <svg viewBox="0 0 240 240" fill="none">
+            <circle cx="120" cy="120" r="96" stroke="var(--hueso-100)" stroke-width="2"/>
+            <circle cx="120" cy="120" r="96" stroke="var(--oxido-500)" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="185 420" transform="rotate(-90 120 120)"/>
+            <circle cx="120" cy="120" r="68" stroke="var(--hueso-100)" stroke-width="2"/>
+            <circle cx="120" cy="120" r="68" stroke="var(--oxido-300)" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="120 320" transform="rotate(-90 120 120)"/>
+            <circle cx="120" cy="24" r="5" fill="var(--oxido-500)"/>
+            <circle cx="120" cy="52" r="4" fill="var(--oxido-300)"/>
+            <circle cx="120" cy="120" r="3.5" fill="var(--grafito-700)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-card"><div class="n" id="metaTotalExercises">37</div><div class="l">Ejercicios técnicos catalogados</div></div>
+        <div class="stat-card"><div class="n">11</div><div class="l">Bloques anatómicos progresivos</div></div>
+        <div class="stat-card"><div class="n">8</div><div class="l">Zonas corporales cubiertas</div></div>
+      </div>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+      <div class="wrap">
+        <div class="philosophy-grid">
+          <div class="quote-card">
+            <div class="mark">“</div>
+            <p>El dolor es la debilidad dejando el cuerpo.</p>
+            <div class="attrib">Mtra. María de Jesús Ortega León<br>Entrenadora en Jefe y Vicepresidenta de la Asociación Universitaria de Halterofilia</div>
+          </div>
+          <div class="philosophy-body">
+            <span class="eyebrow">FILOSOFÍA</span>
+            <h2 style="font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--grafito-950);margin:8px 0 16px;">La biomecánica del blindaje estructural</h2>
+            <p>En el mundo de la fuerza pesada se ha normalizado una idea delicada: pensar que para mover kilos masivos hay que estar rígido como un bloque de concreto. Es común confundir la estabilidad real con la simple falta de rango articular. Pero la realidad en la plataforma es despiadada: un levantador rígido es un atleta lleno de fugas de potencia, que gasta energía extra peleando contra su propio cuerpo.</p>
+            <p>La fuerza sin rango de movimiento es una bomba de tiempo. No importa qué tan fuertes sean de forma concéntrica; si no tienen un "colchón" de seguridad elástica en los rangos finales, cualquier repetición donde pierdan ligeramente el control técnico puede ser la última de su temporada. Construir ese blindaje con flexibilidad activa es lo que los mantendrá levantando kilos durante años.</p>
+            <div class="rules">
+              <div class="rule-card">
+                <div class="rn">01</div>
+                <h4>Tempo sagrado</h4>
+                <span class="sub">Fase excéntrica acentuada</span>
+                <p>Frena la bajada de forma lenta y controlada. Acelerar para rebotar anula la adaptación del tejido conectivo.</p>
+              </div>
+              <div class="rule-card">
+                <div class="rn">02</div>
+                <h4>Rango antes que peso</h4>
+                <span class="sub">Progresión estricta</span>
+                <p>Domina la profundidad articular con técnica perfecta. Incrementa el peso solo cuando el rango final está controlado.</p>
+              </div>
+              <div class="rule-card">
+                <div class="rn">03</div>
+                <h4>Monitorea la tensión</h4>
+                <span class="sub">Estiramiento vs. dolor</span>
+                <p>Incomodidad muscular bajo carga es deseable. Dolor articular agudo o bloqueo seco: detén la serie de inmediato.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="planning">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">CÓMO USAR EL MANUAL</span>
+          <h2>Planificación y dosificación semanal</h2>
+          <p>Para integrar este manual sin interferir con el volumen de los levantamientos principales (Sentadilla, Peso Muerto, Banca, Arranque, Envión), usa estas tres opciones de dosificación.</p>
+        </div>
+        <div class="plan-grid">
+          <div class="plan-card">
+            <div class="pn">1</div>
+            <div class="sub">PREPARACIÓN DE LA SESIÓN PESADA</div>
+            <h3>Microdosis Diaria Integrada</h3>
+            <p>2 a 3 ejercicios específicos antes de la tarima, o como corrección al finalizar el entrenamiento principal.</p>
+            <ul>
+              <li><b>Empuje / overhead:</b> rotación externa sentado, Powell o Trap-3.</li>
+              <li><b>Tracción / cadena posterior:</b> Couch Stretch, ATG Split o Curl Jefferson.</li>
+            </ul>
+          </div>
+          <div class="plan-card">
+            <div class="pn">2</div>
+            <div class="sub">POST-ENTRENAMIENTO ESPECIALIZADO</div>
+            <h3>Bloques Divididos</h3>
+            <p>Divide el manual en dos bloques al final de las sesiones, sin acumular fatiga central previa.</p>
+            <ul>
+              <li><b>Tren superior</b> (lun / jue): Bloques 1, 2, 3, 4, 10 y 11.</li>
+              <li><b>Tren inferior y zona media</b> (mar / vie): Bloques 5, 6, 7, 8 y 9.</li>
+            </ul>
+          </div>
+          <div class="plan-card">
+            <div class="pn">3</div>
+            <div class="sub">DÍAS DE DESCANSO ACTIVO / PFG</div>
+            <h3>Reset Estructural Completo</h3>
+            <p>1 a 2 veces por semana. Ejercicios en secuencia, respetando descansos de 60 a 90 segundos: descompresión vertebral masiva y estimulación neuromuscular que acelera la recuperación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-cta">
+      <div class="wrap">
+        <div class="home-cta-card">
+          <div>
+            <h3>¿Listo para moverte mejor?</h3>
+            <p>Explora los 37 ejercicios técnicos, filtra por zona corporal o equipo, y sigue la técnica paso a paso.</p>
+          </div>
+          <a href="#/biblioteca" class="btn btn-accent">Abrir la biblioteca</a>
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- ============================================================
+       VISTA: BIBLIOTECA
+       ============================================================ -->
+  <section class="view" id="view-library">
+    <div class="wrap">
+      <div class="lib-header">
+        <div class="lib-title-row">
+          <h1>Biblioteca de ejercicios</h1>
+          <span class="result-count" id="resultCount"></span>
+        </div>
+
+        <div class="search-bar">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Buscar ejercicio, músculo o palabra clave…">
+          <button type="button" class="search-clear" id="searchClear" aria-label="Borrar búsqueda">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+
+        <div class="chip-row" id="zoneChips" aria-label="Filtrar por zona corporal"></div>
+
+        <button type="button" class="more-filters-toggle" id="moreFiltersToggle">
+          Filtrar por bloque o equipo
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="more-filters" id="moreFiltersPanel">
+          <div class="filter-group">
+            <span class="filter-label">Bloque</span>
+            <div class="chip-row" id="blockChips"></div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Equipo</span>
+            <div class="chip-row" id="equipChips"></div>
+          </div>
+        </div>
+
+        <button type="button" class="clear-filters" id="clearFilters">Limpiar todos los filtros ×</button>
+      </div>
+
+      <div class="grid" id="exerciseGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INSERCIÓN NUEVA — VISTA: INFORMACIÓN
+       Contenido íntegro de las páginas 3–5 del manual original.
+       Reutiliza los mismos componentes visuales que Inicio:
+       .quote-card / .philosophy-grid, .rules / .rule-card,
+       .plan-grid / .plan-card — misma jerarquía, contenido distinto.
+       ============================================================ -->
+  <section class="view" id="view-info">
+    <div class="wrap">
+      <div class="page-head">
+        <span class="eyebrow">SOBRE EL MANUAL</span>
+        <h1>Presentación y filosofía</h1>
+        <p>Quién escribió este sistema, por qué existe, y las reglas que lo sostienen — contenido íntegro de las páginas 3 a 5 del manual original.</p>
+      </div>
+
+      <!-- Página 3: presentación de la entrenadora -->
+      <section class="info-section">
+        <div class="philosophy-grid">
+          <div class="quote-card">
+            <div class="mark">“</div>
+            <p>Perseverancia y esfuerzo para lograr el éxito en la vida.</p>
+            <div class="attrib">Mtra. María de Jesús Ortega León<br>Maestra en Entrenamiento de la Fuerza y Alto Rendimiento Deportivo<br>Entrenadora en Jefe y Vicepresidenta de la Asociación Universitaria de Halterofilia</div>
+          </div>
+          <div class="philosophy-body">
+            <span class="eyebrow">PRESENTACIÓN DE SU ENTRENADORA Y COMPROMISO DE ENTRENAMIENTO</span>
+            <h2 style="font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--grafito-950);margin:8px 0 16px;">Un compromiso mutuo</h2>
+            <div class="info-prose">
+              <p>Es un orgullo para mí, presentarles este manual. Deseo profundamente que vean este trabajo como un compromiso mutuo: un sistema riguroso que vamos a ejecutar y evaluar juntos en cada levantamiento. Les doy mi palabra de que este programa no es una simple ocurrencia, sino un método fundamentado científicamente.</p>
+              <p>Para construirlo y estructurarlo, realicé una investigación profunda basada en mi experiencia profesional y en libros de texto especializados en ciencias del deporte. Para complementar este trabajo, me apoyé en la información técnica, páginas y videos que nuestra compañera Sofía Muñoz Valdés me fue compartiendo, logrando fusionar la bibliografía de terapia física de Steven Low junto con las herramientas más actuales de movilidad activa difundidas por David Thurin, la metodología de reestructuración de rodillas y caderas del sistema ATG (Athletic Truth Group), y el soporte de herramientas de Inteligencia Artificial para el pulido y redacción técnica del material.</p>
+              <p>La teoría está comprobada y, próximamente, Sofía nos ayudará a subir todo este material a una plataforma digital para facilitar nuestro seguimiento. La ciencia, el respaldo académico y la experiencia ya están plasmadas aquí; aún hay que completarlo, para lograrlo, es totalmente necesario que trabajemos en conjunto. El objetivo es que, en lugar de los links y las fotografías genéricas que se colocaron por el momento, utilicemos fotografías y videos del trabajo real que vayamos realizando en el gimnasio. Quiero que ustedes mismos colaboren registrando los levantamientos y los ejercicios de movilidad para que vayamos puliendo la información basados en nuestra propia experiencia en la tarima. Ahora nos toca a nosotros demostrar los resultados.</p>
+              <p>«Perseverancia y esfuerzo para lograr el éxito en la vida»... decía mi entrenador. Hoy empezamos a construir juntos nuestra mejor versión, puliendo cada detalle y blindando el cuerpo, porque la fuerza real se trabaja en equipo y se demuestra en la barra. Cada kilo que se levanta en la competencia y en nuestra vida misma se paga primero con disciplina, constancia y sudor, nunca olviden nuestro mantra «el dolor es la debilidad dejando el cuerpo».</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Página 4: filosofía y biomecánica del blindaje estructural -->
+      <section class="info-section">
+        <div class="section-head">
+          <span class="eyebrow">FILOSOFÍA DEL ENTRENAMIENTO Y REGLAS DE ORO</span>
+          <h2>Introducción general: la biomecánica del blindaje estructural</h2>
+        </div>
+        <div class="info-prose">
+          <p>En nuestro mundo de la fuerza pesada (halterofilia, powerlifting, strongman y street lifting), se ha normalizado una idea muy delicada entre los atletas: pensar que para mover kilos masivos en la barra hay que estar tan rígidos como un bloque de concreto. Es común confundir la estabilidad real con la simple falta de rango articular. Pero la realidad en la plataforma es despiadada: un levantador rígido es un atleta lleno de fugas de potencia, que gasta energía extra peleando contra su propio cuerpo y que vive a una continua exposición y tormento de sufrir un desgarro muscular o una rotura tendinosa.</p>
+              <p>A qué me refiero con esto por si no ha quedado clarito: a que un atleta que es extremadamente rígido e inflexible está corriendo un riesgo altísimo en cada levantamiento. Literalmente, está caminando al borde del precipicio en cada serie pesada.</p>
+              <p>A nivel técnico y biológico, significa lo siguiente:</p>
+        </div>
+
+        <div class="rules">
+          <div class="rule-card">
+            <div class="rn">01</div>
+            <h4>Cero márgenes de error biomecánico</h4>
+            <p>Cuando levantas cargas intensivas, si la barra se desvía un solo centímetro de su trayectoria ideal (por ejemplo, si el peso te jala hacia adelante en una sentadilla o si fallas en la recepción precisa de un arranque), el cuerpo se ve obligado a estirarse de golpe bajo una presión brutal. Si tus músculos y tendones no están entrenados para soportar tensión en posiciones extremas, ese milisegundo de desvío romperá el tejido de inmediato.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rn">02</div>
+            <h4>Falta de amortiguación elástica</h4>
+            <p>Los tendones deben actuar como resortes de acero capaces de absorber y disipar la fuerza. Un tendón rígido y acortado por falta de flexibilidad activa no absorbe nada; transmite todo el impacto directo a la articulación o al centro muscular, provocando que el músculo se desgarre o el tendón se desprenda del hueso (rotura tendinosa) ante cualquier esfuerzo límite.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rn">03</div>
+            <h4>El peligro de las compensaciones</h4>
+            <p>La rigidez en una zona obliga a otra a trabajar el doble. Si les falta rango activo en los tobillos o los hombros, su cuerpo va a "retener" el movimiento forzando la espalda baja o las rodillas. Esa repetición inestable donde el cuerpo se desacomoda para compensar la falta de movilidad es la que termina en una lesión grave.</p>
+          </div>
+        </div>
+
+        <div class="info-prose" style="margin-top:26px">
+          <p>En resumen, les advierto que la fuerza sin rango de movimiento es una bomba de tiempo. No importa qué tan fuertes sean de forma concéntrica; si no tienen un "colchón" de seguridad elástica en los rangos finales, cualquier repetición donde pierdan ligeramente el control técnico puede ser la última de su temporada. Construir ese blindaje con flexibilidad activa es lo que los mantendrá levantando kilos durante años.</p>
+          <p>Este manual que tienen en sus manos no es un librillo de estiramientos ligeros ni de flexibilidad pasiva para relajarse al final de la sesión. Lo que van a trabajar aquí es un sistema de fuerza en rangos máximos de elongación. Su base científica es concluyente y clara: el tejido conectivo (tendones, ligamentos y fascias) no se flexibiliza perdiendo su tensión natural, sino respondiendo y adaptándose a cargas mecánicas exigentes justo en las posiciones donde el músculo está completamente estirado. Al someter su estructura a tensión en estos rangos finales, obligamos al sistema nervioso y a las células a iniciar un proceso de remodelación tendinosa profunda.</p>
+        </div>
+      </section>
+
+      <!-- Página 5: transferencia biomecánica a los tres vectores de fuerza -->
+      <section class="info-section">
+        <div class="info-prose">
+          <p>El cuerpo se defiende de esa tensión aumentando la síntesis de colágeno y la densidad del tendón, creando un auténtico "blindaje" biológico.</p>
+          <p>La transferencia biomecánica de este blindaje va directo a sus marcas y a su rendimiento en los tres vectores de la fuerza pesada:</p>
+        </div>
+
+        <div class="plan-grid">
+          <div class="plan-card">
+            <div class="pn">1</div>
+            <div class="sub">EFICIENCIA DE TRAYECTORIA</div>
+            <h3>Halterofilia</h3>
+            <p>Desbloquear la verticalidad pélvica absoluta. Un halterófilo con aductores y tobillos adaptados recibe un arranque (snatch squat) o un clin profundo sin que la pelvis se rote hacia atrás (butt wink), eliminando el colapso del torso hacia adelante y asegurando un bloqueo overhead inamovible gracias a la activación del trapecio inferior (Trap 3).</p>
+          </div>
+          <div class="plan-card">
+            <div class="pn">2</div>
+            <div class="sub">VECTORES DE POTENCIA PUROS</div>
+            <h3>Powerlifting</h3>
+            <p>Romper el paralelo en la sentadilla sin perder la tensión de la cadera, lograr un press de banca con una base escapular compacta y libre de pinzamientos anteriores, y asegurar un arranque de peso muerto plano, con la barra pegada a la tibia, gracias a una cadena posterior liberada de rigidez neuromuscular.</p>
+          </div>
+          <div class="plan-card">
+            <div class="pn">3</div>
+            <div class="sub">RESILIENCIA REACTIVA</div>
+            <h3>Strongman y Fuerza Aplicada</h3>
+            <p>Desarrollar estabilidad propioceptiva y neuromuscular en milisegundos. Cuando manejamos cargas asimétricas o dinámicas (como el paseo del granjero, el yugo o las piedras de Atlas), los mecanorreceptores de sus tobillos y rodillas reaccionan de forma refleja ante cualquier perturbación inercial, evitando lesiones lumbares o de ligamentos.</p>
+          </div>
+        </div>
+
+        <div class="info-prose" style="margin-top:26px">
+          <p>El objetivo de este manual de 37 componentes técnicos es darles una herramienta pedagógica y de campo estricta. No buscamos la laxitud de un gimnasta, buscamos estabilidad activa bajo cargas extremas. Al entrenar el sistema nervioso en conjunto con las estructuras elásticas, dejamos de tapar parches con ejercicios básicos de rehabilitación y pasamos a construir levantadores verdaderamente indestructibles sobre la tarima.</p>
+        </div>
+      </section>
+
+      <!-- Página 5: reglas fundamentales completas (versión resumida también en Inicio) -->
+      <section class="info-section">
+        <div class="section-head">
+          <span class="eyebrow">REGLAS FUNDAMENTALES PARA ATLETAS DE FUERZA</span>
+          <h2>Las tres reglas, completas</h2>
+          <p>En Inicio verás la versión resumida de estas mismas reglas — aquí está el texto íntegro del manual.</p>
+        </div>
+        <div class="rules">
+          <div class="rule-card">
+            <div class="rn">01</div>
+            <h4>El tempo es sagrado</h4>
+            <span class="sub">Fase excéntrica acentuada</span>
+            <p>La ganancia de estabilidad estructural y la salud del tendón ocurren frenando la bajada de forma lenta y controlada, sosteniendo la posición más incómoda abajo (isometría). Si aceleras la fase de bajada para rebotar, anulas de inmediato la adaptación profunda del tejido conectivo y arriesgas la articulación bajo carga.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rn">02</div>
+            <h4>Rango antes que peso</h4>
+            <span class="sub">Progresión estricta</span>
+            <p>Las indicaciones de carga iniciales (como el 5% o 10% del peso corporal o de la barra vacía) son puntos de partida obligatorios. Primero se domina por completo la profundidad articular con técnica perfecta; solo cuando el rango final es controlado por tu sistema nervioso se incrementa el peso.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rn">03</div>
+            <h4>Monitorea el tipo de tensión</h4>
+            <span class="sub">Estiramiento vs. dolor</span>
+            <p>Buscamos un estímulo de estiramiento e incomodidad muscular intensa bajo carga elástica o de mancuernas. Eso es normal y deseable para generar hipertrofia en elongación. Lo que jamás debes tolerar es un dolor articular agudo, pinchazos o bloqueos secos; si eso pasa, la serie se detiene de inmediato.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="home-cta-card" style="margin-bottom:8px">
+        <div>
+          <h3>¿Listo para ver los ejercicios?</h3>
+          <p>Toda esta filosofía se traduce en 37 ejercicios técnicos, organizados en 11 bloques.</p>
+        </div>
+        <a href="#/biblioteca" class="btn btn-accent">Ir a la biblioteca</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INSERCIÓN NUEVA — VISTA: GLOSARIO
+       Diccionario para principiantes + directorio de videos generado
+       dinámicamente por app.js (función renderVideoDirectory).
+       ============================================================ -->
+  <section class="view" id="view-glossary">
+    <div class="wrap">
+      <div class="page-head">
+        <span class="eyebrow">PARA PRINCIPIANTES</span>
+        <h1>Glosario de términos</h1>
+        <p>Definiciones claras de los conceptos técnicos que vas a encontrar en cada ejercicio de la biblioteca, en orden alfabético.</p>
+      </div>
+
+      <div class="glossary-grid">
+        <div class="term-card">
+          <h3>Calistenia</h3>
+          <p>Entrenamiento que usa el propio peso corporal como resistencia (flexiones, dominadas, sentadillas al aire), sin pesas externas. Aparece como referencia bibliográfica de este manual (Steven Low) para las progresiones de fuerza en rango completo.</p>
+        </div>
+        <div class="term-card">
+          <h3>Dorsiflexión</h3>
+          <p>Movimiento que acerca la punta del pie hacia la espinilla, doblando el tobillo hacia arriba. Es el foco del Bloque 8 y clave para mantener el talón en el suelo durante una sentadilla profunda.</p>
+        </div>
+        <div class="term-card">
+          <h3>Escápula: retracción y protracción</h3>
+          <p>La escápula (omóplato) puede deslizarse hacia la columna — retracción, como al "apretar los omóplatos" — o alejarse hacia adelante — protracción. Ambos movimientos aparecen constantemente en los bloques de hombro para fijar la barra.</p>
+        </div>
+        <div class="term-card">
+          <h3>Fase concéntrica</h3>
+          <p>La parte de un movimiento en la que el músculo se acorta mientras genera fuerza — por ejemplo, subir el peso. En la notación de tempo (ej. "3-0-1-0") es el tercer número.</p>
+        </div>
+        <div class="term-card">
+          <h3>Fase excéntrica</h3>
+          <p>La parte de un movimiento en la que el músculo se alarga mientras controla el peso — por ejemplo, bajarlo. Este manual la trata como la fase más importante: frenarla lento es lo que construye tendones más resistentes.</p>
+        </div>
+        <div class="term-card">
+          <h3>Halterofilia</h3>
+          <p>Deporte olímpico de fuerza centrado en dos levantamientos técnicos: el arranque (snatch) y el envión (clean and jerk), que exigen movilidad extrema de hombro, cadera y tobillo para recibir la barra en posiciones profundas.</p>
+        </div>
+        <div class="term-card">
+          <h3>Isométrico</h3>
+          <p>Contracción muscular en la que el músculo genera tensión sin cambiar de longitud ni mover la articulación: sostener una posición fija. En el manual son los sostenes estáticos, por ejemplo 45 segundos sin moverse.</p>
+        </div>
+        <div class="term-card">
+          <h3>Movilidad vs. flexibilidad</h3>
+          <p>Flexibilidad es la capacidad pasiva de un tejido para elongarse (que alguien más empuje tu pierna). Movilidad es el control activo de una articulación en su rango completo, con tu propia fuerza. Este manual entrena movilidad, no solo flexibilidad.</p>
+        </div>
+        <div class="term-card">
+          <h3>Powerlifting</h3>
+          <p>Deporte de fuerza que mide el total combinado de tres levantamientos — sentadilla, press de banca y peso muerto — con la máxima carga posible en una sola repetición.</p>
+        </div>
+        <div class="term-card">
+          <h3>Propiocepción</h3>
+          <p>La capacidad del cuerpo de saber en qué posición está una articulación sin necesidad de verla. Se entrena con ejercicios inestables y protege contra lesiones al reaccionar de forma refleja ante un desequilibrio.</p>
+        </div>
+        <div class="term-card">
+          <h3>Rango de movimiento (ROM)</h3>
+          <p>El arco completo de movimiento disponible en una articulación, de un extremo a otro. "Rango máximo de elongación" — el objetivo central de este manual — significa entrenar fuerza en los extremos de ese arco, no solo en el medio.</p>
+        </div>
+        <div class="term-card">
+          <h3>Repeticiones (reps)</h3>
+          <p>Cada ejecución completa de un ejercicio, de principio a fin. "8 a 10 repeticiones" significa realizar el movimiento completo esa cantidad de veces seguidas.</p>
+        </div>
+        <div class="term-card">
+          <h3>RPE</h3>
+          <p>Escala de Esfuerzo Percibido (Rate of Perceived Exertion), del 1 al 10, donde 10 es el esfuerzo máximo posible. Sirve para dosificar la intensidad sin depender solo del peso en la barra.</p>
+        </div>
+        <div class="term-card">
+          <h3>Series (sets)</h3>
+          <p>Un bloque de repeticiones seguidas, después del cual se descansa. "3 series x 10 repeticiones" significa repetir el bloque de 10 repeticiones tres veces, con descanso entre cada una.</p>
+        </div>
+        <div class="term-card">
+          <h3>Strongman</h3>
+          <p>Deporte de fuerza aplicada con implementos no convencionales (piedras de Atlas, yugo, troncos, paseo del granjero), que exige estabilidad reactiva ante cargas asimétricas e inestables.</p>
+        </div>
+        <div class="term-card">
+          <h3>Tempo</h3>
+          <p>La velocidad de cada fase de un movimiento, escrita como 4 números (ej. "3-0-1-0"): segundos de fase excéntrica – pausa abajo – fase concéntrica – pausa arriba. Es la instrucción más repetida en todo este manual.</p>
+        </div>
+      </div>
+
+      <div class="page-head" style="margin-top:56px;padding-bottom:0">
+        <span class="eyebrow">REFERENCIA RÁPIDA</span>
+        <h2 style="font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:800;letter-spacing:-.02em;color:var(--grafito-950);margin:8px 0 10px;">Directorio de videos</h2>
+        <p>Todos los enlaces de video y GIF del manual original, agrupados por bloque. Se genera automáticamente desde la misma base de datos que usa la biblioteca — si agregas un link nuevo en <code style="background:var(--hueso-100);padding:1px 6px;border-radius:5px;font-family:var(--mono);font-size:12.5px;">data.js</code>, aparece aquí solo.</p>
+      </div>
+      <div class="video-directory" id="videoDirectory"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VISTA: DETALLE DE EJERCICIO
+       ============================================================ -->
+  <section class="view" id="view-detail">
+    <div class="detail-top wrap">
+      <a href="#/biblioteca" class="back-btn">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+        Biblioteca
+      </a>
+    </div>
+    <div class="detail-wrap" id="detailContent"></div>
+  </section>
+
+</main>
+
+<footer>
+  Manual de Flexibilidad Activa y Salud Estructural — Sistema de Entrenamiento en Rangos Máximos de Elongación · Contenido íntegro del manual original
+</footer>
+
+<!-- ============================================================
+     LIGHTBOX — visor de imagen a pantalla completa
+     ============================================================ -->
+<div class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="lightbox-stage">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+<!--
+  Integración futura con la API de Hevy (api-key, endpoints, mapeo de
+  zonas/equipo): ver hevy-integration.js — a propósito NO está incluido
+  aquí todavía. Cuando quieras activarlo, agrega:
+  <script src="hevy-integration.js"></script>
+-->
+
+</body>
+</html>
