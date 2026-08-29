@@ -1,18 +1,5 @@
 // Datos extraídos íntegramente de "Manual de Flexibilidad Activa y Salud Estructural"
-// Sistema de Entrenamiento en Rangos Máximos de Elongación para Deportes de Fuerza y Levantamiento Pesado
-// Orden y contenido tal como aparecen en el documento original.
-//
 // Cada ejercicio ahora incluye un campo `media`: un arreglo de imágenes o GIFs propios
-// ({ type: "image"|"gif", src, alt }). Para agregar tu material:
-//   1. Copia el archivo (jpg/png/gif) dentro de la carpeta assets/exercises/
-//   2. Agrégalo al arreglo `media` del ejercicio correspondiente, ej:
-//      media: [{ type: "gif", src: "assets/exercises/ex04.gif", alt: "T alternada prono" }]
-// Un ejercicio sin fotos propias todavía puede dejar `media: []` — la biblioteca
-// muestra automáticamente un espacio reservado en su lugar.
-//
-// Integración futura con la API de Hevy (api-key, endpoints, vocabulario de
-// músculos/equipo): ver hevy-integration.js — ese archivo todavía no está
-// conectado a esta página a propósito, solo deja la estructura lista.
 
 const BLOCKS = [
   { id: 1, title: "Cintura Escapular, Hombro y Manguito Rotador", zone: "hombro" },
