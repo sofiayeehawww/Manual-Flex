@@ -1,8 +1,6 @@
 /* =====================================================================
    FLEXIBILIDAD ACTIVA — app.js
-   Enrutamiento por hash entre 3 vistas (Inicio / Biblioteca / Detalle),
-   filtros de la biblioteca, y galería de medios (imagen/GIF) con lightbox.
-   Sin frameworks ni build step — vanilla JS para que sea fácil de editar.
+   Enrutamiento por hash, filtros de la biblioteca, y galería de medios
    ===================================================================== */
 (function () {
   "use strict";
@@ -92,8 +90,6 @@
     return { name: "home" };
   }
 
-  // INSERCIÓN (Información/Glosario): mapa ruta→pestaña generalizado
-  // (antes era un ternario de 2 casos; ahora cubre las 5 vistas).
   const ROUTE_TO_TAB = {
     home: "/", library: "/biblioteca", detail: "/biblioteca",
     info: "/informacion", glossary: "/glosario",
@@ -108,8 +104,6 @@
     tabIndicator.style.width = tabRect.width + "px";
     tabIndicator.style.transform = `translateX(${tabRect.left - parentRect.left}px)`;
     tabs.forEach((t) => t.classList.toggle("is-active", t === activeTab));
-    // En móvil el riel de pestañas puede desplazarse horizontalmente;
-    // aseguramos que la pestaña activa siempre quede visible.
     activeTab.scrollIntoView({ block: "nearest", inline: "nearest" });
   }
 
@@ -128,13 +122,11 @@
       views.detail.classList.add("is-active");
       renderDetail(ex);
     } else if (route.name === "info") {
-      // INSERCIÓN (Información): vista estática, no requiere render JS.
+      //(Información): vista estática
       views.info.classList.add("is-active");
     } else if (route.name === "glossary") {
-      // INSERCIÓN (Glosario): las definiciones son HTML estático; el
-      // directorio de videos se generó una sola vez desde data.js al
-      // iniciar (ver renderVideoDirectory más abajo), así que aquí solo
-      // activamos la vista.
+      //(Glosario): las definiciones son HTML estático;
+      // directorio de videos desde data.js 
       views.glossary.classList.add("is-active");
     }
     setActiveTabIndicator(route.name);
